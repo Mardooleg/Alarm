@@ -13,12 +13,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.IntRange;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
+//import com.google.android.material.timepicker.TimeModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Alarm alarm;
     Button but1;
     private RecyclerView recyclerViewAlarm;
+//    private TimeModel time;
 
 
     @Override
@@ -74,15 +77,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             materialTimePicker.show(getSupportFragmentManager(), "tag_picker");
         });
 
-        List<Alarm> alarm = App.getInstance().getAppDatabase().modelDao().getAll("");
-        Collections.reverse(alarm);
-        StateAdapter stateAdapter = new StateAdapter(this, alarm);
-        stateAdapter.setOnClickToMore(this);
-        recyclerViewAlarm = findViewById(R.id.rv);
-        recyclerViewAlarm.setAdapter(stateAdapter);
-        recyclerViewAlarm.setLayoutManager(new GridLayoutManager(this, 1));
+//        List<Alarm> alarm = App.getInstance().getAppDatabase().modelDao().getAll("");
+//        Collections.reverse(alarm);
+//        StateAdapter stateAdapter = new StateAdapter(this, alarm);
+//        stateAdapter.setOnClickToMore(this);
+//        recyclerViewAlarm = findViewById(R.id.rv);
+//        recyclerViewAlarm.setAdapter(stateAdapter);
+//        recyclerViewAlarm.setLayoutManager(new GridLayoutManager(this, 1));
 
     }
+
+//    @IntRange(from = 0, to = 23)
+//    public int getHour() {
+//        return time.hour % 24;
+//    }
+//
+//    @IntRange(from = 0, to = 60)
+//    public int getMinute() {
+//        return time.minute;
+//    }
+
     private PendingIntent getAlarmInfoPendingIntent() {
         Intent alarmInfoIntent = new Intent(this, MainActivity.class);
         alarmInfoIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

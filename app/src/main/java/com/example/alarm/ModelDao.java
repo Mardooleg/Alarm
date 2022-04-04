@@ -11,7 +11,7 @@ import java.util.List;
 
 @Dao
 public interface ModelDao {
-    @Query("SELECT* FROM Alarm ")
+    @Query("SELECT* FROM Alarm WHERE milisec LIKE '%' || :name || '%' ")
     List<Alarm> getAll(String name);
 
 
